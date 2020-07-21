@@ -30,13 +30,13 @@ class ReviewItem extends React.Component {
 						<img src={'data:image/jpeg;base64,'+this.state.profile_pic} alt="" id="review_image"></img>
 					</div>
 					<div className="col-sm-8">
-						<p>Por {this.state.username}</p>
-						<p>Puntaje: {this.state.score} Estrellas</p>
+						<p id="review_text" >Por {this.state.username}</p>
+						<p id="review_text" className="font-weight-bold">Puntaje: {this.state.score} Estrellas</p>
 					</div>
 					
 				</div>  
-				<div id="item_review" className="row">
-					<p>{this.state.description}</p>	
+				<div id="review_description" className="row">
+					<p id="review_description_text">{this.state.description}</p>	
 				</div>  
 				<div id="item_review" className="row">
 					<p>Likes: {this.state.upvotes}</p>

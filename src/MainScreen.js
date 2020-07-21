@@ -3,10 +3,12 @@ import axios from 'axios';
 import GameItem from './GameItem';
 import FilterPlatform from "./FilterPlatform";
 import FilterGenre from "./FilterGenre";
+import LoadingSpinner from './Spinner';
 class MainScreen extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
+			loading: false,
 			token: "",
 			games: []
 		};
@@ -27,6 +29,8 @@ class MainScreen extends React.Component {
 							<p className="lead">Powered By: <a href="http://whatcha-playing.herokuapp.com">Whatcha Playing</a></p>
 							<button id="explore_button" className="btn btn-dark" onClick={this.startPage}> Explorar! </button>
 						</div>
+						{ this.state.loading ? <LoadingSpinner></LoadingSpinner> : 
+
 						<div id="catalog" >
 								<div className="navBar" id="filter_bar">
 									<h5 id="filter_title">Filter By: </h5>	
@@ -43,6 +47,7 @@ class MainScreen extends React.Component {
 								}
 							</div>
 						</div>
+						}
 					</main>
 					
 					<br></br>
@@ -82,26 +87,32 @@ class MainScreen extends React.Component {
 	startPage = () => {
 		//limpio la pantalla y muestro juegos
 		document.getElementById("info_screen").style.display = "none";
-		document.getElementById("catalog").style.visibility = "visible";
 
 		
 		//Recupero los juegos de la api_rest
 		const url_games = "https://whatcha-playing.herokuapp.com/api/games"
 		const auth_data = this.state.token;
-
-		
+		this.setState({loading: true}, 
+		() =>
+		{
+				
 		let promesa_games = axios.get(url_games, {
-  				headers: {
-				'Authorization': auth_data
+			headers: {
+		  'Authorization': auth_data
 			}
 		})
 		//Para cada juego creo un componente
 		promesa_games.then(response =>  {
 			this.setState({
+				loading: false,
 				games: response.data.games
 			})
+			document.getElementById("catalog").style.visibility = "visible";
 		})
+		}	
+		);
 
+	
 	}
 }	
 
