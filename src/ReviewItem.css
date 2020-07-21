@@ -1,0 +1,23 @@
+#review_panel {
+	border-radius: 25px;
+	background-color:#20273f ;
+	margin-bottom: 10px;
+
+}
+
+#item_review {
+	margin-bottom: 2px !important;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#container_image{
+	margin: 5px;
+	border-radius: 25px;
+	padding: 0%;
+}
+
+#review_image{
+	max-width: 75px ;
+	max-height: 75px;
+}

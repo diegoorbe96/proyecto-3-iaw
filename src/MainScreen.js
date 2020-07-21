@@ -25,7 +25,7 @@ class MainScreen extends React.Component {
 							<h1 className="cover-heading" >Game Tracker</h1>
 							<p className="lead">Mira informacion de tus juegos favoritos y explora un catalogo lleno de experiencias nuevas!</p>
 							<p className="lead">Powered By: <a href="http://whatcha-playing.herokuapp.com">Whatcha Playing</a></p>
-							<button className="btn btn-dark" onClick={this.startPage}> Explorar! </button>
+							<button id="explore_button" className="btn btn-dark" onClick={this.startPage}> Explorar! </button>
 						</div>
 						<div id="catalog" >
 								<div className="navBar" id="filter_bar">
@@ -37,7 +37,7 @@ class MainScreen extends React.Component {
 								<div className="row row-cols-1 row-cols-md-3" id="game_grid" > 
 								{
 									this.state.games.map((game) => {
-										return <GameItem game_id={game.id} game_name={game.game_name} genre={game.genre} platform={game.platform} cover_art_pic={game.cover_art_pic} auth_token={this.state.token} ></GameItem>
+										return <GameItem  game_id={game.id} key={game.id} game_name={game.game_name} genre={game.genre} platform={game.platform} cover_art_pic={game.cover_art_pic} auth_token={this.state.token} ></GameItem>
 								}		
 									)
 								}
@@ -73,6 +73,8 @@ class MainScreen extends React.Component {
 		promesa.then(res => {
 		  save_token = "Bearer "+res.data.access_token;
 		  this.setState({token: save_token});
+		  document.getElementById("explore_button").style.visibility = "visible";
+
 		});
 
 	}
@@ -95,7 +97,6 @@ class MainScreen extends React.Component {
 		})
 		//Para cada juego creo un componente
 		promesa_games.then(response =>  {
-			console.log(response.data.games);
 			this.setState({
 				games: response.data.games
 			})

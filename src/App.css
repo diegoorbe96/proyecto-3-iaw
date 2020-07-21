@@ -42,3 +42,7 @@
   float:left;
   margin-right: 10px;
 }
+
+#explore_button{
+  visibility: hidden;
+}

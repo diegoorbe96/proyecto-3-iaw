@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import "./GameItem.css";
 import GameInfo from './GameInfo';
 
@@ -25,7 +24,7 @@ class GameItem extends React.Component {
 			<div>
 				<div className="col mb-4">
 				<div className="card">
-					<img id="picture" className="card-img-top" src={'data:image/jpeg;base64,'+this.state.img} ></img>	
+					<img id="picture" className="card-img-top" src={'data:image/jpeg;base64,'+this.state.img} alt=""></img>	
 					<h5 className="card-title">
 						{this.state.name}
 					</h5>
