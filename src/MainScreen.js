@@ -4,21 +4,42 @@ import GameItem from './GameItem';
 import FilterPlatform from "./FilterPlatform";
 import FilterGenre from "./FilterGenre";
 import LoadingSpinner from './Spinner';
+import SearchBar from './SearchBar';
 class MainScreen extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
+			search_data: "",
 			loading: false,
 			token: "",
 			games: []
 		};
+		this.filterByName = this.filterByName.bind(this);
 	}
+
+	onSearchData = (data) => {
+		this.setState({search_data: data}, this.filterByName);
+	}
+
+
+	//Aca filtro por nombre, seguro reuso parte del metodo para platform y genre
+	filterByName = () => {
+		const filteredGames = this.state.games.filter((game) => {
+			return game.game_name.toLowerCase().includes(this.state.search_data.toLowerCase());
+		}).sort((a,b) => a.game_name > b.game_name? 1:-1);
+
+
+		return filteredGames;
+	}
+
 
 	render() { 
 		return  (
 				<div id="content" className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> 
 					<header id="header_bar" className="masthead mb-auto">
 						<h4 className="masthead brand" id="brand_title">Game Tracker</h4>
+
+						<SearchBar parentCallback = {this.onSearchData}></SearchBar>
 					</header>
 					<br></br> 
 
@@ -40,7 +61,7 @@ class MainScreen extends React.Component {
 							
 								<div className="row row-cols-1 row-cols-md-3" id="game_grid" > 
 								{
-									this.state.games.map((game) => {
+									this.filterByName().map((game) => {
 										return <GameItem  game_id={game.id} key={game.id} game_name={game.game_name} genre={game.genre} platform={game.platform} cover_art_pic={game.cover_art_pic} auth_token={this.state.token} ></GameItem>
 								}		
 									)
@@ -108,6 +129,7 @@ class MainScreen extends React.Component {
 				games: response.data.games
 			})
 			document.getElementById("catalog").style.visibility = "visible";
+			document.getElementById("container_search_bar").style.visibility = "visible";
 		})
 		}	
 		);

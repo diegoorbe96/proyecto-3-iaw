@@ -1,0 +1,25 @@
+#container_search_bar{
+	max-width: 35%;
+	float: right;
+	margin-top: 0px;
+	visibility: hidden;
+}
+
+#side_desc{
+	color: white;
+	background-color: #212529;
+	border-color:#212529;
+
+}
+
+#input_search{
+	color: gray;
+	background-color: #212e3b;
+	border-color: #212529;
+
+}
+
+#search_icon{
+	max-width: 20px;
+	max-height: 20px;
+}
