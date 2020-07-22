@@ -10,6 +10,8 @@ class MainScreen extends React.Component {
 		super(props);
 		this.state = {
 			search_data: "",
+			genre_selected: "",
+			platform_selected: "",
 			loading: false,
 			token: "",
 			games: []
@@ -18,19 +20,59 @@ class MainScreen extends React.Component {
 	}
 
 	onSearchData = (data) => {
-		this.setState({search_data: data}, this.filterByName);
+		this.setState({search_data: data},() => {console.log("Busqueda")});
+	}
+	onPlatformSelected = (data) => {
+		this.setState({platform_selected: data},() => {console.log("Plataforma")});
+	}
+	onGenreSelected = (data) => {
+		this.setState({genre_selected: data},() => {console.log("Genero")});
 	}
 
 
 	//Aca filtro por nombre, seguro reuso parte del metodo para platform y genre
 	filterByName = () => {
+		//Busco por nombre
 		const filteredGames = this.state.games.filter((game) => {
 			return game.game_name.toLowerCase().includes(this.state.search_data.toLowerCase());
-		}).sort((a,b) => a.game_name > b.game_name? 1:-1);
-
+		})
+		//Busco por genero
+		.filter((game) => {
+			//return (game.genre.toLowerCase() === this.state.genre_selected.toLowerCase());
+			return this.filtroGenero(game.genre.toLowerCase());
+		})
+		//Busco por plataforma
+		.filter((game) => {
+			return this.filtroPlatform(game.platform.toLowerCase());
+			//return game.platform.toLowerCase() === this.state.platform_selected.toLowerCase();
+		})
+		
+		.sort((a,b) => a.game_name > b.game_name? 1:-1);
 
 		return filteredGames;
 	}
+
+		filtroGenero(genre){
+			if (this.state.genre_selected === "")
+				return true;
+			else
+				if (this.state.genre_selected.toLowerCase() === genre){
+					return true;
+				}else{
+					return false;
+				}
+		}
+
+		filtroPlatform(platform){
+			if (this.state.platform_selected === "")
+				return true;
+			else
+				if (this.state.platform_selected.toLowerCase() === platform){
+					return true;
+				}else{
+					return false;
+				}
+		}
 
 
 	render() { 
@@ -55,8 +97,8 @@ class MainScreen extends React.Component {
 						<div id="catalog" >
 								<div className="navBar" id="filter_bar">
 									<h5 id="filter_title">Filter By: </h5>	
-									<FilterPlatform></FilterPlatform>
-									<FilterGenre></FilterGenre>
+									<FilterPlatform parentCallback = {this.onPlatformSelected}></FilterPlatform>
+									<FilterGenre parentCallback = {this.onGenreSelected}></FilterGenre>
 								</div>
 							
 								<div className="row row-cols-1 row-cols-md-3" id="game_grid" > 

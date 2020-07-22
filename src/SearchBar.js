@@ -39,7 +39,6 @@ class SearchBar extends React.Component {
 					</div>
 					<input type="text" className="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="input_search" onChange={this.onInputChange}></input>				
 				</div>
-
 		 );
 	}
 }
