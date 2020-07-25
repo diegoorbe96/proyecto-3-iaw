@@ -24,7 +24,9 @@ class GameItem extends React.Component {
 			<div>
 				<div className="col mb-4">
 				<div className="card">
+					<div id="picture_container">
 					<img id="picture" className="card-img-top" src={'data:image/jpeg;base64,'+this.state.img} alt=""></img>	
+					</div>
 					<h5 className="card-title">
 						{this.state.name}
 					</h5>

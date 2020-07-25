@@ -79,7 +79,7 @@ class GameInfo  extends React.Component {
 						<Modal.Body  id="modal_body">
 						<div className="container">
 							<div className="row">
-								<div className="col-sm">
+								<div id="img_container" className="col-sm">
 									<img id="game_img" src={'data:image/jpeg;base64,'+this.state.cover_art_pic} alt="" className="rounded"></img>
 								</div>
 								<div className="col-sm">

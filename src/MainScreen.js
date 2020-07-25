@@ -101,7 +101,7 @@ class MainScreen extends React.Component {
 									<FilterGenre parentCallback = {this.onGenreSelected}></FilterGenre>
 								</div>
 							
-								<div className="row row-cols-1 row-cols-md-3" id="game_grid" > 
+								<div className="row row-cols-1 row-cols-md-4" id="game_grid" > 
 								{
 									this.filterByName().map((game) => {
 										return <GameItem  game_id={game.id} key={game.id} game_name={game.game_name} genre={game.genre} platform={game.platform} cover_art_pic={game.cover_art_pic} auth_token={this.state.token} ></GameItem>

@@ -1,8 +1,19 @@
 #picture  {
-	margin: 5px;
+	max-width: 250px;
+	max-height: 300px;
+
+
+}
+
+#picture_container {
+	display: flex;
+	align-items: center; 
+	justify-content: center;
 	width: 250px;
 	height: 300px;
+	margin-bottom: 5px;
 }
+
 
 .card {
 	border-radius: 10px;
