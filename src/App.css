@@ -1,0 +1,48 @@
+#header_bar {
+    min-width: 100%;
+    min-height: 50px;
+    align-items: center;
+}
+#brand_title {
+  color: white; 
+  float: left;
+
+}
+
+#main_screen {
+  min-height: 600px;
+}
+
+#content{
+  text-align: center;
+ }
+
+
+#body {
+  padding: 0%;
+  background-color:#071224;
+
+}
+
+#catalog {
+  visibility: hidden;
+}
+
+#info_screen , #footer_text{
+  color: rgb(226, 232, 240);
+}
+
+#filter_bar {
+  display: inline-block;
+  min-width: 80%;
+  color: white;
+}
+
+#filter_title{
+  float:left;
+  margin-right: 10px;
+}
+
+#explore_button{
+  visibility: hidden;
+}

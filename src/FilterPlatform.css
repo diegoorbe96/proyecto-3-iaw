@@ -1,0 +1,16 @@
+#select_platform {
+	max-width: 40%;
+	float: left;
+}
+
+#input_description {
+	background-color: rgb(18, 25, 39);
+	color: white;
+	border-color: rgb(27, 37, 58);
+}
+
+#selectPlatform {
+	background-color: rgb(27, 37, 58);
+	border-color: rgb(27, 37, 58) !important;
+	color: white;
+}

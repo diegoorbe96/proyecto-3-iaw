@@ -1,0 +1,17 @@
+#select_genre {
+	max-width: 40%;
+	float: left;
+	margin-left: 10px;
+}
+
+#input_genre {
+	background-color: rgb(18, 25, 39);
+	color: white;
+	border-color: rgb(27, 37, 58);
+}
+
+#selectGenre {
+	background-color: rgb(27, 37, 58);
+	border-color: rgb(27, 37, 58) !important;
+	color: white;
+}
