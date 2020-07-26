@@ -1,6 +1,6 @@
 import React from 'react';
 import "./SearchBar.css";
-
+import img_lupa from "./search.png"
 
 
 class SearchBar extends React.Component {
@@ -34,7 +34,8 @@ class SearchBar extends React.Component {
 				<div className="input-group mb-3" id="container_search_bar">
 					<div className="input-group-prepend">
 						<span className="input-group-text" id="side_desc">
-						<img id="search_icon" src="https://www.iconsdb.com/icons/preview/dark-gray/search-3-xxl.png" alt=""></img>
+					
+						<img id="search_icon" src={img_lupa} alt=""></img>
 						</span>
 					</div>
 					<input type="text" className="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="input_search" onChange={this.onInputChange}></input>				
